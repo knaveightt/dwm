@@ -7,6 +7,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Inconsolata Nerd Font:pixelsize=16:antialias=true:autohint=true","Inconsolata for Powerline:pixelsize=16:antialias=true:autohint=true","Hack Nerd Font Mono:pixelsize=16:antialias=true:autohint=true","monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
+
+/* colors definitions */
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -18,6 +20,20 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+static const char *tagsel[][2][2] = {
+	/*      norm                          sel       */
+	/*  fg          bg              fg          bg  */
+	{ { "#7dc1cf", "#07080e" }, { "#7dc1cf", "#07080e" } },
+	{ { "#b8d68c", "#07080e" }, { "#7dc1cf", "#07080e" } },
+	{ { "#e1aa5d", "#07080e" }, { "#7dc1cf", "#07080e" } },
+	{ { "#525068", "#07080e" }, { "#7dc1cf", "#07080e" } },
+	{ { "#8542ff", "#07080e" }, { "#7dc1cf", "#07080e" } },
+	{ { "#4e9fb1", "#07080e" }, { "#7dc1cf", "#07080e" } },
+	{ { "#f39d21", "#07080e" }, { "#7dc1cf", "#07080e" } },
+	{ { "#a0cf5d", "#07080e" }, { "#7dc1cf", "#07080e" } },
+	{ { "#d23d3d", "#07080e" }, { "#7dc1cf", "#07080e" } },
+};
+
 /* tagging */
 static const char *tags[] = { " ", "󱂬 ", " ", " ", " ", "󰙯 ", " ", " ", " " };
 static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -27,20 +43,6 @@ static const unsigned int ulinepad	= 5;	/* horizontal padding between the underl
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
 static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
-
-static const char *tagsel[][2][2] = {
-	/*      norm                          sel       */
-	/*  fg          bg              fg          bg  */
-	{ { col_gray3, col_gray1 }, { "#ffffff", "#ff0000" } },
-	{ { col_gray3, col_gray1 }, { "#ffffff", "#ff7f00" } },
-	{ { col_gray3, col_gray1 }, { "#000000", "#ffff00" } },
-	{ { col_gray3, col_gray1 }, { "#000000", "#00ff00" } },
-	{ { col_gray3, col_gray1 }, { "#ffffff", "#0000ff" } },
-	{ { col_gray3, col_gray1 }, { "#ffffff", "#4b0082" } },
-	{ { col_gray3, col_gray1 }, { "#ffffff", "#9400d3" } },
-	{ { col_gray3, col_gray1 }, { "#000000", "#ffffff" } },
-	{ { col_gray3, col_gray1 }, { "#ffffff", "#000000" } },
-};
 
 static const Rule rules[] = {
 	/* xprop(1):
