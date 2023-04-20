@@ -749,7 +749,7 @@ drawbar(Monitor *m)
 	}
 	x = 0;
 	w = TEXTW(buttonbar);
-	drw_setscheme(drw, scheme[SchemeNorm]);
+	drw_setscheme(drw, scheme[SchemeButn]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, buttonbar, 0);
 	for (i = 0; i < LENGTH(tags); i++) {
 		/* Do not draw vacant tags */
