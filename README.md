@@ -10,3 +10,4 @@ My build of dwm by suckless
 - [underlinetags](https://dwm.suckless.org/patches/underlinetags/dwm-underlinetags-6.2.diff)
 - [rainbowtags-modified](https://pastebin.com/raw/MpYmWZyp)
 - [statusbutton](https://dwm.suckless.org/patches/statusbutton/dwm-statusbutton-20180524-c8e9479.diff)
+- [layoutmenu](https://dwm.suckless.org/patches/layoutmenu/dwm-layoutmenu-6.2.diff)
