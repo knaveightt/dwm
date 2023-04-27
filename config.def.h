@@ -22,7 +22,7 @@ static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-	[SchemeHid]  = { col_cyan,  col_grey1,  col_cyan },
+	[SchemeHid]  = { col_cyan,  col_gray1,  col_cyan },
 	[SchemeButn] = { col_red,   default_bg, default_bg },
 	[SchemeLayt] = { col_purple, default_bg, default_bg},
 };
