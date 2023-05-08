@@ -5,6 +5,8 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+#define ICONSIZE bh   /* icon size (bh = bar height) */
+#define ICONSPACING 5 /* space between icon and title */
 static const char buttonbar[]       = "󰣑";
 static const char *fonts[]          = { "Inconsolata Nerd Font:pixelsize=16:antialias=true:autohint=true","Inconsolata for Powerline:pixelsize=16:antialias=true:autohint=true","Hack Nerd Font Mono:pixelsize=16:antialias=true:autohint=true","monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
