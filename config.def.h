@@ -80,7 +80,8 @@ static const Layout layouts[] = {
 /* key definitions */
 #define MODKEY Mod4Mask /* changed from Mod1Mask (default) to Mod4Mask (Super key) */
 #define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
+	{ MODKEY,                       KEY,      viewoccupied,    {.ui = 1 << TAG} }, \
+	{ MODKEY|Mod1Mask,              KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
