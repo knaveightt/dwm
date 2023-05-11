@@ -13,3 +13,6 @@ My build of dwm by suckless
 - [layoutmenu](https://dwm.suckless.org/patches/layoutmenu/dwm-layoutmenu-6.2.diff)
 - [awesomebar](https://dwm.suckless.org/patches/awesomebar/dwm-awesomebar-20220925-6.3.diff)
 - [winicon](https://dwm.suckless.org/patches/winicon/dwm-winicon-6.3-v2.1.diff)
+
+## Other Modifications
+- *viewoccupied* function to allow numeric keys to match numbering of 'occupied tags' only, when selecting a tag to view

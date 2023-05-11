@@ -254,6 +254,7 @@ static void updateicon(Client *c);
 static void updatewindowtype(Client *c);
 static void updatewmhints(Client *c);
 static void view(const Arg *arg);
+static void viewoccupied(const Arg *arg);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
@@ -2490,6 +2491,51 @@ view(const Arg *arg)
 		selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
 	focus(NULL);
 	arrange(selmon);
+}
+
+void
+viewoccupied(const Arg *arg)
+{
+  Client *c;
+  unsigned int tagmask = 0; /* holds occupied tags */
+  unsigned int request = arg->ui & TAGMASK; /* the occupied tag to be seen */
+  Arg viewtag; /* will be the translated tag to (attempt to) view */
+  viewtag.ui = request; /* sensible default in-case something's wrong */
+
+  /* check if all tags are currently selected first. if this is the case,
+     just pass the requested tag to the view function. This is just a
+     QOL feature */
+  if (selmon->tagset[selmon->seltags] == TAGMASK)
+  {
+    view(arg);
+    return;
+  }
+
+  /* build the tagmask indicating all currently occupied tags
+     (currently occupied = has at least 1 client) */
+  for(c = selmon->clients; c; c = c->next)
+  {
+    tagmask = tagmask | c->tags;
+  }
+
+  /* algorithm to return the tag that is the ordinally-selected
+     occupied tag (1st, 2nd, etc) the user want's to view */
+  unsigned int check = 1 & TAGMASK;  
+  for(int i=0; i < LENGTH(tags); i++)
+  {
+    if(tagmask & check) /* is next tag to check occupied? */ 
+    {
+      if(request & 1) /* is occupied tag the ordinal tag we're looking for? */
+      {
+	viewtag.ui = check;
+	break;
+      }
+      request >>= 1; /* since checked tag was occupied, move to next request */
+    }
+    check <<= 1;
+  }
+  
+  view(&viewtag);
 }
 
 Client *
