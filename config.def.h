@@ -13,7 +13,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 #define ICONSIZE bh   /* icon size (bh = bar height) */
 #define ICONSPACING 5 /* space between icon and title */
 static const char buttonbar[]       = "󰣑";
-static const char *fonts[]          = { "Inconsolata Nerd Font:pixelsize=16:antialias=true:autohint=true","Inconsolata for Powerline:pixelsize=16:antialias=true:autohint=true","Hack Nerd Font Mono:pixelsize=16:antialias=true:autohint=true","monospace:size=10" };
+static const char *fonts[]          = { "Inconsolata:pixelsize=16:antialias=true:autohint=true","Symbols Nerd Font:pixelsize=16:antialias=true:autohint=true"};
 static const char dmenufont[]       = "monospace:size=10";
 
 /* colors definitions */
@@ -49,7 +49,7 @@ static const char *tagsel[][2][2] = {
 };
 
 /* tagging */
-static const char *tags[] = { " ", "󱂬 ", " ", " ", " ", "󰙯 ", " ", " ", " " };
+static const char *tags[] = { "", "󰣆", "", "", "", "󰙯", "", "", "" };
 static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const int momentaryalttags = 1; /* 1 means alttags will show only when key is held down*/
 
