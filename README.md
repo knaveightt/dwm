@@ -13,6 +13,12 @@ My build of dwm by suckless
 - [layoutmenu](https://dwm.suckless.org/patches/layoutmenu/dwm-layoutmenu-6.2.diff)
 - [awesomebar](https://dwm.suckless.org/patches/awesomebar/dwm-awesomebar-20220925-6.3.diff)
 - [winicon](https://dwm.suckless.org/patches/winicon/dwm-winicon-6.3-v2.1.diff)
+- [status2d with systray](https://dwm.suckless.org/patches/status2d/dwm-status2d-systray-6.4.diff)
+- [statuscmd](https://dwm.suckless.org/patches/statuscmd/dwm-statuscmd-status2d-20210405-60bb3df.diff)
 
 ## Other Modifications
 - *viewoccupied* function to allow numeric keys to match numbering of 'occupied tags' only, when selecting a tag to view
+
+## Technical Fixes
+- *awesomebar* required a fix that prevented a crash in dwm when clicking in an area where a client window was expected
+  to be there in the bar. The fix I implemented was from [this reddit post](https://reddit.com/r/suckless/ibwzhh/with_dwmawesomebar_patch_crash/)
