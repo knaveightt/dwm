@@ -561,11 +561,11 @@ buttonpress(XEvent *e)
 
 			if (c) {
 				do {
-					if (!ISVISIBLE(c))
+					if (!c || !ISVISIBLE(c))
 						continue;
 					else
 						x +=(1.0 / (double)m->bt) * m->btw;
-				} while (ev->x > x && (c = c->next));
+				} while (c && ev->x > x && (c = c->next));
 
 				click = ClkWinTitle;
 				arg.v = c;
@@ -2557,6 +2557,8 @@ void
 togglewin(const Arg *arg)
 {
 	Client *c = (Client*)arg->v;
+	if (!c)
+	  return;
 
 	if (c == selmon->sel) {
 		hidewin(c);

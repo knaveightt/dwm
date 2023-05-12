@@ -18,3 +18,7 @@ My build of dwm by suckless
 
 ## Other Modifications
 - *viewoccupied* function to allow numeric keys to match numbering of 'occupied tags' only, when selecting a tag to view
+
+## Technical Fixes
+- *awesomebar* required a fix that prevented a crash in dwm when clicking in an area where a client window was expected
+  to be there in the bar. The fix I implemented was from [this reddit post](https://reddit.com/r/suckless/ibwzhh/with_dwmawesomebar_patch_crash/)
