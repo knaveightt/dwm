@@ -526,9 +526,9 @@ buttonpress(XEvent *e)
 			arg.ui = 1 << i;
 		} else if (ev->x < x + TEXTW(selmon->ltsymbol))
 			click = ClkLtSymbol;
-		/* adding 2px right padding for awesomebar patch, as well as systray width and statusw */
-		else if (ev->x > selmon->ww - statusw + lrpad - 2 - getsystraywidth()) {
-		        x = selmon->ww - statusw;
+		/* adding 2px right padding for awesomebar patch, as well as systray width and statusw, and buttonbar up front */
+		else if (ev->x > selmon->ww - statusw - lrpad - 2 - getsystraywidth()) {
+		  x = selmon->ww - statusw - getsystraywidth();
 			click = ClkStatusText;
 
 			/* added for statuscmd */
