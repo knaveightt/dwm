@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int snap      = 16;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft  = 0;   /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -12,47 +12,57 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 #define ICONSIZE bh   /* icon size (bh = bar height) */
 #define ICONSPACING 5 /* space between icon and title */
-static const char buttonbar[]       = "󰣑";
-static const char *fonts[]          = { "Inconsolata:pixelsize=16:antialias=true:autohint=true","Symbols Nerd Font:pixelsize=16:antialias=true:autohint=true"};
+static const char buttonbar[]       = "󰣑 |";
+static const char *fonts[]          = { "Hermit:pixelsize=14:antialias=true:autohint=true","Symbols Nerd Font:pixelsize=18:antialias=true:autohint=true"};
 static const char dmenufont[]       = "monospace:size=10";
 
 /* colors definitions */
+static const char default_bg[]      = "#282d2a";
+static const char default_fg[]      = "#f6f3e8";
+static const char default_gray[]    = "#656868";
+static const char col_midgray[]     = "#635770";
+static const char col_lightblue[]   = "#8ac6f2";
+static const char col_coral[]       = "#f28b86";
+static const char col_lightpurple[] = "#bf93c3";
+static const char col_orange[]      = "#ea9847";
+static const char col_lightgreen[]  = "#86b187";
+static const char col_sand[]        = "#e0d063";
+static const char col_pink[]        = "#e18cbb";
+static const char col_teal[]        = "#65a399";
+static const char col_red[]         = "#e2434c";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
-static const char default_bg[]      = "#07080e";
-static const char col_red[]         = "#d23d3d";
 static const char col_purple[]      = "#8542ff";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-	[SchemeHid]  = { col_cyan,  col_gray1,  col_cyan },
-	[SchemeButn] = { col_red,   default_bg, default_bg },
-	[SchemeLayt] = { col_purple, default_bg, default_bg},
+	[SchemeNorm] = { default_fg, default_bg, default_fg },
+	[SchemeSel]  = { col_sand, default_bg,  col_sand  },
+	[SchemeHid]  = { col_midgray,  default_bg,  default_bg },
+	[SchemeButn] = { default_fg,   default_bg, default_bg },
+	[SchemeLayt] = { default_fg, default_bg, default_bg},
 };
 
 static const char *tagsel[][2][2] = {
 	/*      norm                          sel       */
 	/*  fg          bg              fg          bg  */
-	{ { "#7dc1cf", "#07080e" }, { "#7dc1cf", "#07080e" } },
-	{ { "#b8d68c", "#07080e" }, { "#7dc1cf", "#07080e" } },
-	{ { "#e1aa5d", "#07080e" }, { "#7dc1cf", "#07080e" } },
-	{ { "#525068", "#07080e" }, { "#7dc1cf", "#07080e" } },
-	{ { "#8542ff", "#07080e" }, { "#7dc1cf", "#07080e" } },
-	{ { "#4e9fb1", "#07080e" }, { "#7dc1cf", "#07080e" } },
-	{ { "#f39d21", "#07080e" }, { "#7dc1cf", "#07080e" } },
-	{ { "#a0cf5d", "#07080e" }, { "#7dc1cf", "#07080e" } },
-	{ { "#d23d3d", "#07080e" }, { "#7dc1cf", "#07080e" } },
+	{ { col_lightblue  , default_bg }, { default_fg, default_bg } },
+	{ { col_coral      , default_bg }, { default_fg, default_bg } },
+	{ { col_lightpurple, default_bg }, { default_fg, default_bg } },
+	{ { col_orange     , default_bg }, { default_fg, default_bg } },
+	{ { col_lightgreen , default_bg }, { default_fg, default_bg } },
+	{ { col_sand       , default_bg }, { default_fg, default_bg } },
+	{ { col_pink       , default_bg }, { default_fg, default_bg } },
+	{ { col_teal       , default_bg }, { default_fg, default_bg } },
+	{ { col_red        , default_bg }, { default_fg, default_bg } },
 };
 
-/* tagging */
+/* tagging and rules */
 static const char *tags[] = { "", "󰣆", "", "", "", "󰙯", "", "", "" };
 static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const int momentaryalttags = 1; /* 1 means alttags will show only when key is held down*/
-
 static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke	= 2;	/* thickness / height of the underline */
 static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
@@ -72,14 +82,13 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
-
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "| []=",      tile },    /* first entry is default */
+	{ "| ><>",      NULL },    /* no layout function means floating behavior */
+	{ "| [M]",      monocle },
 };
 
 /* key definitions */
@@ -98,7 +107,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "st", "-z", "19", NULL };
 static const char *xmenucmd[] = { "spade-xmenu.sh", NULL };
 static const char *layoutmenu_cmd = "layoutmenu.sh";
 
