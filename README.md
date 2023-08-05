@@ -17,6 +17,7 @@ My build of dwm by suckless
 - [statuscmd](https://dwm.suckless.org/patches/statuscmd/dwm-statuscmd-status2d-20210405-60bb3df.diff)
 - [focusonnetactive](https://dwm.suckless.org/patches/focusonnetactive/dwm-focusonnetactive-6.2.diff)
 - [switchtotag](https://dwm.suckless.org/patches/switchtotag/dwm-switchtotag-6.2.diff)
+- [vanitygaps](https://dwm.suckless.org/patches/vanitygaps/dwm-vanitygaps-6.2.diff)
 
 ## Other Modifications
 - *viewoccupied* function to allow numeric keys to match numbering of 'occupied tags' only, when selecting a tag to view
