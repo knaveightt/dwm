@@ -157,8 +157,9 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_y,      defaultgaps,    {0} },
 
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_v,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_d,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_v,      setlayout,      {.v = &layouts[13]} },
+	{ MODKEY,                       XK_d,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[11]} },
 	{ MODKEY,                       XK_r,      setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 
