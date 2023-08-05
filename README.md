@@ -16,6 +16,7 @@ My build of dwm by suckless
 - [status2d with systray](https://dwm.suckless.org/patches/status2d/dwm-status2d-systray-6.4.diff)
 - [statuscmd](https://dwm.suckless.org/patches/statuscmd/dwm-statuscmd-status2d-20210405-60bb3df.diff)
 - [focusonnetactive](https://dwm.suckless.org/patches/focusonnetactive/dwm-focusonnetactive-6.2.diff)
+- [switchtotag](https://dwm.suckless.org/patches/switchtotag/dwm-switchtotag-6.2.diff)
 
 ## Other Modifications
 - *viewoccupied* function to allow numeric keys to match numbering of 'occupied tags' only, when selecting a tag to view
