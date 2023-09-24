@@ -128,15 +128,18 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *roficmd[] = { "spade-rofi-launch.sh", NULL};
-static const char *rofiwincmd[] = { "spade-rofi-win.sh", NULL};
+static const char *rofiappscmd[] = { "spade-rofi-prompt.sh", "apps", NULL};
+static const char *roficommandscmd[] = { "spade-rofi-prompt.sh", "command", NULL};
+static const char *rofiwindowscmd[] = { "spade-rofi-prompt.sh", "window", NULL};
+static const char *rofifilescmd[] = { "spade-rofi-prompt.sh", "file", NULL};
 static const char *termcmd[]  = { "st", "-z", "19", NULL };
 static const char *xmenucmd[] = { "spade-xmenu.sh", NULL };
 static const char *layoutmenu_cmd = "layoutmenu.sh";
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = roficmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = rofiappscmd } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = roficommandscmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
@@ -169,7 +172,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_n,      togglealttag,   {0} },
 
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_w,      spawn,          {.v = rofiwincmd } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = rofiwindowscmd } },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
