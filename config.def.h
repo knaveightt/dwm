@@ -132,6 +132,7 @@ static const char *rofiappscmd[] = { "spade-rofi-prompt.sh", "apps", NULL};
 static const char *roficommandscmd[] = { "spade-rofi-prompt.sh", "command", NULL};
 static const char *rofiwindowscmd[] = { "spade-rofi-prompt.sh", "window", NULL};
 static const char *rofifilescmd[] = { "spade-rofi-prompt.sh", "file", NULL};
+static const char *emacsclient[] = { "emacsclient", "-c", NULL};
 static const char *termcmd[]  = { "st", "-z", "19", NULL };
 static const char *xmenucmd[] = { "spade-xmenu.sh", NULL };
 static const char *layoutmenu_cmd = "layoutmenu.sh";
@@ -161,10 +162,11 @@ static const Key keys[] = {
 
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_v,      setlayout,      {.v = &layouts[13]} },
+	{ MODKEY|ShiftMask,             XK_v,      togglefloating, {0} },
 	{ MODKEY,                       XK_d,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[11]} },
 	{ MODKEY,                       XK_r,      setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY,                       XK_space,  spawn,          {.v = emacsclient } },
 
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_g,      zoom,           {0} },
