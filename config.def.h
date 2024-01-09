@@ -132,6 +132,7 @@ static const char *rofiappscmd[] = { "spade-rofi-prompt.sh", "apps", NULL};
 static const char *roficommandscmd[] = { "spade-rofi-prompt.sh", "command", NULL};
 static const char *rofiwindowscmd[] = { "spade-rofi-prompt.sh", "window", NULL};
 static const char *rofifilescmd[] = { "spade-rofi-prompt.sh", "file", NULL};
+static const char *lfcmd[] = { "st", "-z", "19", "-e", "lf", NULL};
 static const char *emacsclient[] = { "emacsclient", "-c", NULL};
 static const char *termcmd[]  = { "st", "-z", "19", NULL };
 static const char *xmenucmd[] = { "spade-xmenu.sh", NULL };
@@ -175,6 +176,8 @@ static const Key keys[] = {
 
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_w,      spawn,          {.v = rofiwindowscmd } },
+	{ MODKEY,                       XK_e,      spawn,          {.v = lfcmd } },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = rofifilescmd } },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
